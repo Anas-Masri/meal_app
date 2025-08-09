@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:meal_app/views/home_page.dart';
+import 'package:meal_app/views/onboarding.dart';
 
 void main() {
   runApp(const MyApp());
@@ -21,6 +21,6 @@ class MyApp extends StatelessWidget {
             home: child,
           );
         },
-        child: const HomePage());
+        child: const Onboarding());
   }
 }

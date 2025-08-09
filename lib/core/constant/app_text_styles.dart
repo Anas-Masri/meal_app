@@ -36,6 +36,12 @@ class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: AppColor.whiteColor,
   );
+  static TextStyle style14white600 = TextStyle(
+    fontFamily: 'Inter',
+    fontSize: 14.sp,
+    fontWeight: FontWeight.w600,
+    color: AppColor.whiteColor,
+  );
 
   static TextStyle style16black500 = TextStyle(
     fontFamily: 'Inter',
