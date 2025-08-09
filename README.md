@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # meal_app
 
 A new Flutter project.
@@ -14,3 +15,7 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# meal_app_using
+تطبيق لإدارة وحفظ الوجبات، يعتمد على flutter_screenutil لجعل الواجهة Responsive وAdaptive على مختلف الشاشات، ويستخدم sqflite لتخزين البيانات محليًا، مما يتيح للمستخدم إضافة وحفظ وجباته المفضلة بسهولة.
+>>>>>>> 077c0653c8df8d1bafff8127db673b466f941c32
