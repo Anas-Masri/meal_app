@@ -55,4 +55,10 @@ class AppTextStyles {
     fontWeight: FontWeight.w500,
     color: AppColor.blackColor,
   );
+  static TextStyle style12black500 = TextStyle(
+    fontFamily: 'Inter',
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColor.blackColor,
+  );
 }

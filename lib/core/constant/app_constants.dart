@@ -1,14 +1,6 @@
+import 'package:meal_app/core/constant/app_assets.dart';
+
 class AppConstants {
-  // static const titleList = [
-  //   'Save Your Meals Ingredient',
-  //   'Use Our App The Best Choice',
-  //   'Our App Your Ultimate Choice',
-  // ];
-  // static const subTitleList = [
-  //   'Add Your Meals and its Ingredients and we will save it for you',
-  //   'the best choice for your kitchen do not hesitate',
-  //   'All the best restaurants and their top menus are ready for you',
-  // ];
   static const List<Map<String, dynamic>> onboardingList = [
     {
       'title': 'Save Your Meals Ingredient',
@@ -24,5 +16,11 @@ class AppConstants {
       'subTitle':
           'All the best restaurants and their top menus are ready for you',
     },
+  ];
+  static List<String> imageList = [
+    AppAssets.imageTest1,
+    AppAssets.imageTest2,
+    AppAssets.imageTest3,
+    AppAssets.imageTest4
   ];
 }

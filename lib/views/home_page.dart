@@ -1,10 +1,88 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:meal_app/core/constant/app_colors.dart';
+import 'package:meal_app/core/constant/app_constants.dart';
+import 'package:meal_app/core/constant/app_text_styles.dart';
+
+import '../core/constant/app_assets.dart';
+import 'widgets/grid_view_item_builder.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      floatingActionButton: Container(
+        decoration: BoxDecoration(
+            color: AppColor.whiteColor,
+            borderRadius: BorderRadius.circular(60),
+            border: Border.all(color: AppColor.primaryColor, width: 2.sp)),
+        width: 60.r,
+        height: 60.r,
+        child: Icon(
+          Icons.add,
+          color: AppColor.primaryColor,
+          size: 40,
+        ),
+      ),
+      body: Column(
+        children: [
+          SizedBox(
+            height: 260.h,
+            child: Stack(
+              children: [
+                Positioned(
+                  top: -117,
+                  left: -120,
+                  child: SizedBox(
+                      width: 632.w,
+                      height: 346.h,
+                      child: Image.asset(
+                        width: 632.w,
+                        height: 346.h,
+                        AppAssets.secondaryImg,
+                        fit: BoxFit.cover,
+                      )),
+                ),
+                Positioned(
+                  top: 64.h,
+                  left: 43.w,
+                  child: SizedBox(
+                      width: 175.w,
+                      child: Text(
+                        'Welcome Add A New Recipe',
+                        style: AppTextStyles.style32white600,
+                      )),
+                )
+              ],
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.only(left: 16.w),
+            alignment: Alignment.topLeft,
+            child: Text('Your Food', style: AppTextStyles.style16black600),
+          ),
+          SizedBox(height: 25.h),
+          Container(
+            padding: EdgeInsets.symmetric(horizontal: 22.w),
+            height: 425.h,
+            child: GridView.builder(
+              padding: EdgeInsets.zero,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 22.w,
+                  mainAxisSpacing: 46.h,
+                  childAspectRatio: 3.5 / 4),
+              itemCount: AppConstants.imageList.length,
+              itemBuilder: (BuildContext context, int index) {
+                return GridViewItemBuilder(
+                    image: AppConstants.imageList[index]);
+              },
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
