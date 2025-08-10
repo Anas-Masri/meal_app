@@ -23,4 +23,6 @@ class AppConstants {
     AppAssets.imageTest3,
     AppAssets.imageTest4
   ];
+  // static bool isFirstTimeValue = false;
+  static const String isNotFirstTimeKey = 'isFirstTimeKey';
 }

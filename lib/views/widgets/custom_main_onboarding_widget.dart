@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meal_app/core/constant/app_colors.dart';
+import 'package:meal_app/core/constant/app_constants.dart';
 import 'package:meal_app/core/constant/app_text_styles.dart';
 import 'package:meal_app/views/home_page.dart';
 import 'package:meal_app/views/widgets/page_indicator.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class CustomMainOnboardingWidget extends StatelessWidget {
   const CustomMainOnboardingWidget(
@@ -50,7 +52,10 @@ class CustomMainOnboardingWidget extends StatelessWidget {
           const Spacer(),
           selectedIndex == 2
               ? GestureDetector(
-                  onTap: () {
+                  onTap: () async {
+                    final prefs = await SharedPreferences.getInstance();
+
+                    prefs.setBool(AppConstants.isNotFirstTimeKey, true);
                     Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -76,7 +81,10 @@ class CustomMainOnboardingWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       GestureDetector(
-                        onTap: () {
+                        onTap: () async {
+                          final prefs = await SharedPreferences.getInstance();
+
+                          prefs.setBool(AppConstants.isNotFirstTimeKey, true);
                           Navigator.push(
                               context,
                               MaterialPageRoute(

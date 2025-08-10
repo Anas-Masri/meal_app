@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meal_app/core/constant/app_constants.dart';
+import 'package:meal_app/views/home_page.dart';
 import 'package:meal_app/views/widgets/custom_main_onboarding_widget.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/constant/app_assets.dart';
 
@@ -18,6 +20,23 @@ PageController controller = PageController(
 );
 
 class _OnboardingState extends State<Onboarding> {
+  @override
+  void initState() {
+    cheackFirstTime();
+    super.initState();
+  }
+
+  Future<void> cheackFirstTime() async {
+    final prefs = await SharedPreferences.getInstance();
+    prefs.getBool(AppConstants.isNotFirstTimeKey) == true
+        ? Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const HomePage(),
+            ))
+        : null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

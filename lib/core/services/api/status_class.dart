@@ -1,13 +1,13 @@
-enum Status_Classes {
-  Isloading,
+// enum Status_Classes {
+//   Isloading,
 
-  error,
+//   error,
 
-  success,
+//   success,
 
-  Offline_Error,
+//   Offline_Error,
 
-  Another_Error,
+//   Another_Error,
 
-  Server_Error
-}
+//   Server_Error
+// }
