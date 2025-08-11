@@ -1,8 +1,13 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meal_app/core/constant/app_colors.dart';
 import 'package:meal_app/core/constant/app_constants.dart';
 import 'package:meal_app/core/constant/app_text_styles.dart';
+import 'package:meal_app/db_helper/db_helper.dart';
+import 'package:meal_app/model/meal_model.dart';
+import 'package:sqflite/sqflite.dart';
 
 import '../core/constant/app_assets.dart';
 import 'widgets/grid_view_item_builder.dart';
@@ -12,6 +17,9 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DbHelper dbHealpoer = DbHelper.instance;
+    // dbHealpoer.getMeals().then((value) => print(value));
+
     return Scaffold(
       floatingActionButton: Container(
         decoration: BoxDecoration(
@@ -64,22 +72,53 @@ class HomePage extends StatelessWidget {
             child: Text('Your Food', style: AppTextStyles.style16black600),
           ),
           SizedBox(height: 25.h),
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 22.w),
-            height: 425.h,
-            child: GridView.builder(
-              padding: EdgeInsets.zero,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 22.w,
-                  mainAxisSpacing: 46.h,
-                  childAspectRatio: 3.5 / 4),
-              itemCount: AppConstants.imageList.length,
-              itemBuilder: (BuildContext context, int index) {
-                return GridViewItemBuilder(
-                    image: AppConstants.imageList[index]);
-              },
-            ),
+          FutureBuilder(
+            future: dbHealpoer.getMeals(),
+            builder: (BuildContext context, AsyncSnapshot snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              } else if (snapshot.hasError) {
+                return Center(
+                  child: Text(snapshot.error.toString()),
+                );
+              } else if (snapshot.data.isEmpty) {
+                return Expanded(
+                  child: Container(
+                    padding: EdgeInsets.all(50.w),
+                    alignment: Alignment.center,
+                    child: Text(
+                      textAlign: TextAlign.center,
+                      'No meals added yet add new meal',
+                      style: AppTextStyles.style24black400,
+                    ),
+                  ),
+                );
+              } else {
+                List<MealModel> meals = snapshot.data;
+                return Container(
+                  padding: EdgeInsets.symmetric(horizontal: 22.w),
+                  height: 425.h,
+                  child: GridView.builder(
+                    padding: EdgeInsets.zero,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        crossAxisSpacing: 22.w,
+                        mainAxisSpacing: 46.h,
+                        childAspectRatio: 3.5 / 4),
+                    itemCount: meals.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return GridViewItemBuilder(
+                          image: meals[index].imageUrl,
+                          name: meals[index].name,
+                          rate: meals[index].rate,
+                          time: meals[index].time);
+                    },
+                  ),
+                );
+              }
+            },
           ),
         ],
       ),

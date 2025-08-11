@@ -3,6 +3,7 @@ import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
 class DbHelper {
+  static final DbHelper instance = DbHelper();
   Database? _database;
 
   Future<Database> get database async {
@@ -27,7 +28,7 @@ class DbHelper {
         imageUrl TEXT,
         description TEXT,
         rate REAL,
-        created_at TEXT
+        time TEXT
       )
 ''');
   }

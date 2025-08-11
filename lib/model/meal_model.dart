@@ -1,15 +1,13 @@
-import 'package:flutter/foundation.dart';
-
 class MealModel {
   String name;
-  String imageURL;
+  String imageUrl;
   String description;
-  String rate;
+  double rate;
   String time;
 
   MealModel({
     required this.name,
-    required this.imageURL,
+    required this.imageUrl,
     required this.description,
     required this.rate,
     required this.time,
@@ -18,7 +16,7 @@ class MealModel {
   Map<String, dynamic> toMap() {
     return {
       'name': name,
-      'imageURL': imageURL,
+      'imageUrl': imageUrl,
       'description': description,
       'rate': rate,
       'time': time
@@ -28,7 +26,7 @@ class MealModel {
   factory MealModel.fromMap(Map<String, dynamic> map) {
     return MealModel(
       name: map['name'],
-      imageURL: map['imageURL'],
+      imageUrl: map['imageUrl'],
       description: map['description'],
       rate: map['rate'],
       time: map['time'],
