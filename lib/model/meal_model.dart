@@ -25,11 +25,11 @@ class MealModel {
 
   factory MealModel.fromMap(Map<String, dynamic> map) {
     return MealModel(
-      name: map['name'],
-      imageUrl: map['imageUrl'],
-      description: map['description'],
-      rate: map['rate'],
-      time: map['time'],
+      name: map['name'] ?? '',
+      imageUrl: map['imageUrl'] ?? '',
+      description: map['description'] ?? '',
+      rate: map['rate'] ?? '0.0',
+      time: map['time'] ?? '',
     );
   }
 }

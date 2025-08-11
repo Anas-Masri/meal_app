@@ -8,13 +8,24 @@ import 'package:meal_app/views/add_meal.dart';
 import '../core/constant/app_assets.dart';
 import 'widgets/grid_view_item_builder.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    DbHelper dbHelper = DbHelper.instance;
+    dbHelper.getMeals();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    DbHelper dbHealpoer = DbHelper.instance;
-    // dbHealpoer.getMeals().then((value) => print(value));
+    DbHelper dbHelper = DbHelper.instance;
 
     return Scaffold(
       floatingActionButton: GestureDetector(
@@ -78,7 +89,7 @@ class HomePage extends StatelessWidget {
           ),
           SizedBox(height: 25.h),
           FutureBuilder(
-            future: dbHealpoer.getMeals(),
+            future: dbHelper.getMeals(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(

@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meal_app/core/constant/app_colors.dart';
 import 'package:meal_app/core/constant/app_constants.dart';
 import 'package:meal_app/core/constant/app_text_styles.dart';
+import 'package:meal_app/core/services/validation/validation_service.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField({
@@ -10,11 +11,12 @@ class CustomTextField extends StatelessWidget {
     required this.title,
     required this.hintText,
     this.maxLine,
+    required this.controller,
   });
   final String title;
   final String hintText;
   final int? maxLine;
-
+  final TextEditingController controller;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -26,7 +28,9 @@ class CustomTextField extends StatelessWidget {
           style: AppTextStyles.style14black500,
         ),
         SizedBox(height: 8.h),
-        TextField(
+        TextFormField(
+          validator: ValidationService.requiredField,
+          controller: controller,
           maxLines: maxLine ?? 1,
           decoration: InputDecoration(
               hintText: hintText,
