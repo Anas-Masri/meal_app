@@ -1,11 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:meal_app/core/constant/app_colors.dart';
-import 'package:meal_app/core/constant/app_text_styles.dart';
-import 'package:meal_app/core/services/db_helper/db_helper.dart';
-import 'package:meal_app/model/meal_model.dart';
-import 'package:meal_app/views/home_page.dart';
-import 'package:meal_app/views/widgets/custom_text_field.dart';
+import '../core/export/exports.dart';
 
 class AddMeal extends StatefulWidget {
   const AddMeal({super.key});

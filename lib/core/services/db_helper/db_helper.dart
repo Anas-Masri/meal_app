@@ -1,6 +1,4 @@
-import 'package:meal_app/model/meal_model.dart';
-import 'package:path/path.dart';
-import 'package:sqflite/sqflite.dart';
+import '../../export/exports.dart';
 
 class DbHelper {
   static final DbHelper instance = DbHelper();

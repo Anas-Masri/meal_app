@@ -1,12 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:meal_app/core/constant/app_colors.dart';
-import 'package:meal_app/core/constant/app_text_styles.dart';
-import 'package:meal_app/core/services/db_helper/db_helper.dart';
-import 'package:meal_app/model/meal_model.dart';
-import 'package:meal_app/views/add_meal.dart';
-import '../core/constant/app_assets.dart';
-import 'widgets/grid_view_item_builder.dart';
+import '../core/export/exports.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

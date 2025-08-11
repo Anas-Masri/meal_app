@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:meal_app/core/constant/app_colors.dart';
+import '../export/exports.dart';
 
 class AppTextStyles {
   static TextStyle style14grey400 = TextStyle(
