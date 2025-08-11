@@ -1,4 +1,7 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meal_app/core/constant/app_assets.dart';
+import 'package:meal_app/core/constant/app_colors.dart';
 
 class AppConstants {
   static const List<Map<String, dynamic>> onboardingList = [
@@ -25,4 +28,8 @@ class AppConstants {
   ];
   // static bool isFirstTimeValue = false;
   static const String isNotFirstTimeKey = 'isFirstTimeKey';
+
+  static OutlineInputBorder border = OutlineInputBorder(
+      borderRadius: BorderRadius.circular(8.r),
+      borderSide: BorderSide(color: AppColor.lightGreyColor, width: 1));
 }

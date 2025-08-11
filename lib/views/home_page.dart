@@ -1,14 +1,10 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:meal_app/core/constant/app_colors.dart';
-import 'package:meal_app/core/constant/app_constants.dart';
 import 'package:meal_app/core/constant/app_text_styles.dart';
-import 'package:meal_app/db_helper/db_helper.dart';
+import 'package:meal_app/core/services/db_helper/db_helper.dart';
 import 'package:meal_app/model/meal_model.dart';
-import 'package:sqflite/sqflite.dart';
-
+import 'package:meal_app/views/add_meal.dart';
 import '../core/constant/app_assets.dart';
 import 'widgets/grid_view_item_builder.dart';
 
@@ -21,17 +17,26 @@ class HomePage extends StatelessWidget {
     // dbHealpoer.getMeals().then((value) => print(value));
 
     return Scaffold(
-      floatingActionButton: Container(
-        decoration: BoxDecoration(
-            color: AppColor.whiteColor,
-            borderRadius: BorderRadius.circular(60),
-            border: Border.all(color: AppColor.primaryColor, width: 2.sp)),
-        width: 60.r,
-        height: 60.r,
-        child: Icon(
-          Icons.add,
-          color: AppColor.primaryColor,
-          size: 40,
+      floatingActionButton: GestureDetector(
+        onTap: () {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const AddMeal(),
+              ));
+        },
+        child: Container(
+          decoration: BoxDecoration(
+              color: AppColor.whiteColor,
+              borderRadius: BorderRadius.circular(60),
+              border: Border.all(color: AppColor.primaryColor, width: 2.sp)),
+          width: 60.r,
+          height: 60.r,
+          child: Icon(
+            Icons.add,
+            color: AppColor.primaryColor,
+            size: 40,
+          ),
         ),
       ),
       body: Column(
